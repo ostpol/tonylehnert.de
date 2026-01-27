@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/posts/bticino/</loc>
+    <lastmod>2022-07-23T21:47:39+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2022-07-23T21:47:39+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2022-07-23T21:47:39+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/irobot-akku-fix/</loc>
+    <lastmod>2022-01-05T19:08:09+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/irobot-station-fix/</loc>
+    <lastmod>2021-09-20T17:40:46+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/temperatur/</loc>
+    <lastmod>2021-04-06T16:39:33+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/ubuntu/</loc>
+    <lastmod>2021-03-14T10:39:20+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/smlreader/</loc>
+    <lastmod>2021-01-21T17:54:04+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/paperless/</loc>
+    <lastmod>2021-01-03T17:31:41+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+  </url>
+</urlset>

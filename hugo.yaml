@@ -1,0 +1,20 @@
+baseURL: https://tonylehnert.de/
+languageCode: de-de
+title: Tony Lehnert
+theme: ["PaperMod"]
+params:
+  profileMode:
+    enabled: true
+    imageUrl: "/images/tony.jpeg"
+    imageTitle: "Das ist Tony."
+    title: "👋"
+    subtitle: "Ich verdiene Geld mit IT und betreibe in meiner Freizeit trotzdem gern Computerei."
+    buttons:
+      - name: "Posts"
+        url: "/posts"
+
+  socialIcons:
+    - name: "Mastodon"
+      url: "https://social.tchncs.de/@tonylehnert"
+    - name: "Printables"
+      url: "https://www.printables.com/@ostpol_335886"

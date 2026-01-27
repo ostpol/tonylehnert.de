@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Tony Lehnert</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Tony Lehnert</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>de-de</language>
+    <lastBuildDate>Sat, 23 Jul 2022 21:47:39 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bticino Klingelanlage „smart“ machen</title>
+      <link>http://localhost:1313/posts/bticino/</link>
+      <pubDate>Sat, 23 Jul 2022 21:47:39 +0100</pubDate>
+      <guid>http://localhost:1313/posts/bticino/</guid>
+      <description>&lt;p&gt;In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der &lt;a href=&#34;https://www.heise.de/select/ct/2018/17/1534215254552977&#34;&gt;ESP-Überallklingel&lt;/a&gt; „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.&lt;/p&gt;
+&lt;p&gt;Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus &lt;a href=&#34;https://www.tensorflow.org/&#34;&gt;TensorFlow&lt;/a&gt;, &lt;a href=&#34;https://teachablemachine.withgoogle.com/&#34;&gt;Teachable Machine&lt;/a&gt; und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Troubleshooting: iRobot Roomba i7&#43; lädt nicht mehr</title>
+      <link>http://localhost:1313/posts/irobot-akku-fix/</link>
+      <pubDate>Wed, 05 Jan 2022 19:08:09 +0100</pubDate>
+      <guid>http://localhost:1313/posts/irobot-akku-fix/</guid>
+      <description>&lt;p&gt;Mein iRobot Roomba i7+ hat nach nahezu exakt 12 Monaten den Dienst quittiert. Nach über 12 Stunden auf der Ladestation war der Akku immer noch leer. Hier möchte ich zusammenfassen, was getan werden kann, um den Fehler zu finden.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://i.redd.it/4m46m7zgpn881.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sind-die-ladekontakte-sauber&#34;&gt;Sind die Ladekontakte sauber?&lt;/h2&gt;
+&lt;p&gt;iRobot empfiehlt in diesem Fall die Säuberung der Ladekontakte an Roboter und Ladestation. Am besten soll das mit einem „Schmutzradierer“ funktionieren. Welche Kontakte gemeint sind und wie sie gereinigt werden erklärt iRobot &lt;a href=&#34;https://support.irobot.de/s/article/528&#34;&gt;hier&lt;/a&gt;. Das brachte in meinem Fall keine Hilfe.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fix: iRobot Roomba i7&#43; saugt nicht mehr ab</title>
+      <link>http://localhost:1313/posts/irobot-station-fix/</link>
+      <pubDate>Mon, 20 Sep 2021 17:40:46 +0100</pubDate>
+      <guid>http://localhost:1313/posts/irobot-station-fix/</guid>
+      <description>&lt;p&gt;Ich besitze einen iRobot Roomba i7+. Das + trägt der Saugroboter im Namen, weil er über eine automatische Absaugstation verfügt. So muss nur alle x Wochen der Beutel in der Clean Base gewechselt und nicht der interne Behälter des Roboters nach jedem Einsatz. Außerdem kann der Roboter seinen Behälter so auch während eines Reinigungsvorganges leeren, falls er dabei einmal zu voll wird. Wir haben einen Hund und zwei Katzen, ohne Clean Base wird das nichts – die Anschaffung hat sich also gelohnt.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>iOS Widget für die Temperatur auf dem Sonnenberg</title>
+      <link>http://localhost:1313/posts/temperatur/</link>
+      <pubDate>Tue, 06 Apr 2021 16:39:33 +0100</pubDate>
+      <guid>http://localhost:1313/posts/temperatur/</guid>
+      <description>&lt;p&gt;Seit einiger Zeit logge ich die Außentemperatur an unserer Wohnung auf &lt;a href=&#34;http://temperatur.tonylehnert.de/&#34;&gt;temperatur.tonylehnert.de&lt;/a&gt;. Zuerst in Altchemnitz, jetzt auf dem Sonnenberg.&lt;/p&gt;
+&lt;p&gt;Wenn die Daten also schon im Internet herumliegen, kann ich mit &lt;a href=&#34;https://scriptable.app/&#34;&gt;Scriptable&lt;/a&gt; für iOS auch ein Widget bauen. Ich bediente mich eines &lt;a href=&#34;https://hackernoon.com/how-to-create-a-slick-ios-widget-in-javascript-e11p33t2&#34;&gt;Grundgerüsts&lt;/a&gt; und passte es optisch &lt;a href=&#34;https://gist.github.com/kevinkub/46caebfebc7e26be63403a7f0587f664&#34;&gt;diesem Widget&lt;/a&gt; für die Corona-Inzidenz an (bzw. einer alten Version davon).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Die Version des Inzidenz-Widgets, die bei mir noch lief und auf die ich das Temperatur-Widget angepasst habe, war offensichtlich uralt. Egal, reicht so. &lt;a href=&#34;https://t.co/tlIKOPUW9w&#34;&gt;pic.twitter.com/tlIKOPUW9w&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ubuntu 20.04 und WLAN auf einem MacBook Pro 8,1 (early 2011)</title>
+      <link>http://localhost:1313/posts/ubuntu/</link>
+      <pubDate>Sun, 14 Mar 2021 10:39:20 +0100</pubDate>
+      <guid>http://localhost:1313/posts/ubuntu/</guid>
+      <description>&lt;p&gt;2011 kaufte ich mir ein MacBook Pro. Mein zweites Produkt von Apple, nach einem iPod nano. Seitdem funktioniert es, abgesehen vom Einbau einer SSD und mehr RAM, ohne Eingriffe hervorragend und bekam nie ein Clean Install. Immer nur Updates auf neue Versionen von OS X/macOS. Mit macOS 10.13 war 2017 allerdings Schluss. Einige Zeit gab (gibt?) es zwar noch Updates, aber ich hatte ohnehin keinen großen Bedarf an macOS mehr – also installierte ich Ubuntu 20.04.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT)</title>
+      <link>http://localhost:1313/posts/smlreader/</link>
+      <pubDate>Thu, 21 Jan 2021 17:54:04 +0100</pubDate>
+      <guid>http://localhost:1313/posts/smlreader/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.bundesnetzagentur.de/DE/Sachgebiete/ElektrizitaetundGas/Verbraucher/Metering/SmartMeter_node.html&#34;&gt;Bis 2032&lt;/a&gt; sollen alle Verbraucher eine moderne Messeinrichtung (mME) bekommen. In Chemnitz verteilt eins energie/inetz offensichtlich schon fleißig mMEs. So hatte ich schon in unserer vorherigen Wohnung ein Smartmeter und auch in der neuen Wohnung hängt so ein Teil im Keller. In meinem Fall sind beide Geräte vom Typ &lt;a href=&#34;https://www.dzg.de/fileadmin/dzg/content/downloads/produkte-zaehler/dvs74/dzg_dvs74_handbuch.pdf&#34;&gt;DWS 7412.1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Die meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit verbreitet sind hier wahrscheinlich fertige USB-Leseköpfe. Wer einen Lötkolben halten kann, kann sich aber auch selbst einen Lesekopf bauen. Ich habe mir vor einiger Zeit ein Gehäuse hierfür konstruiert und gedruckt. Auf &lt;a href=&#34;https://www.thingiverse.com/thing:3844844&#34;&gt;Thingiverse&lt;/a&gt; habe ich auch die Quellen für die Elektronik verlinkt.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mein Setup fürs papierlose Büro</title>
+      <link>http://localhost:1313/posts/paperless/</link>
+      <pubDate>Sun, 03 Jan 2021 17:31:41 +0100</pubDate>
+      <guid>http://localhost:1313/posts/paperless/</guid>
+      <description>&lt;p&gt;In den letzten Jahren habe ich immer wieder darüber nachgedacht, wie ich mit Papier umgehen möchte. Es stapelt sich, bestenfalls in Ordnern, kann kein Ctrl+F und nimmt Platz weg. Ansätze fürs papierlose Büro gibt es viele, aber bisher wollte für mich nichts (dauerhaft) funktionieren. Manchmal war es der langsame Scanner, der nicht duplex scannt, manchmal war es die Organisation der Dateien.&lt;/p&gt;
+&lt;p&gt;Irgendwann bin ich dann über einen gebrauchten Fujitsu ScanSnap S500M (Yay, duplex!) gestolpert und habe ein Setup gefunden, das für mich funktioniert. Mittlerweile sollten für mein Setup auch Scan-Apps mithalten können, solange sie die Scans zentral ablegen können. Duplex machen die aber immer noch nicht…&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

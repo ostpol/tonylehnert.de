@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Troubleshooting: iRobot Roomba i7&#43; lädt nicht mehr | Tony Lehnert</title>
+<meta name="keywords" content="">
+<meta name="description" content="Mein iRobot Roomba i7&#43; hat nach nahezu exakt 12 Monaten den Dienst quittiert. Nach über 12 Stunden auf der Ladestation war der Akku immer noch leer. Hier möchte ich zusammenfassen, was getan werden kann, um den Fehler zu finden.
+
+Sind die Ladekontakte sauber?
+iRobot empfiehlt in diesem Fall die Säuberung der Ladekontakte an Roboter und Ladestation. Am besten soll das mit einem „Schmutzradierer“ funktionieren. Welche Kontakte gemeint sind und wie sie gereinigt werden erklärt iRobot hier. Das brachte in meinem Fall keine Hilfe.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/irobot-akku-fix/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/irobot-akku-fix/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Tony Lehnert (Alt + H)">Tony Lehnert</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Troubleshooting: iRobot Roomba i7&#43; lädt nicht mehr
+    </h1>
+    <div class="post-meta"><span title='2022-01-05 19:08:09 +0100 CET'>January 5, 2022</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Mein iRobot Roomba i7+ hat nach nahezu exakt 12 Monaten den Dienst quittiert. Nach über 12 Stunden auf der Ladestation war der Akku immer noch leer. Hier möchte ich zusammenfassen, was getan werden kann, um den Fehler zu finden.</p>
+<p><img loading="lazy" src="https://i.redd.it/4m46m7zgpn881.jpg"></p>
+<h2 id="sind-die-ladekontakte-sauber">Sind die Ladekontakte sauber?<a hidden class="anchor" aria-hidden="true" href="#sind-die-ladekontakte-sauber">#</a></h2>
+<p>iRobot empfiehlt in diesem Fall die Säuberung der Ladekontakte an Roboter und Ladestation. Am besten soll das mit einem „Schmutzradierer“ funktionieren. Welche Kontakte gemeint sind und wie sie gereinigt werden erklärt iRobot <a href="https://support.irobot.de/s/article/528">hier</a>. Das brachte in meinem Fall keine Hilfe.</p>
+<h2 id="reboot-tut-gut">Reboot tut gut.<a hidden class="anchor" aria-hidden="true" href="#reboot-tut-gut">#</a></h2>
+<p>Die Ladestation lässt sich durch das Trennen der Stromversorgung neu starten. Der Roboter startet neu, wenn man die CLEAN-Taste für mind. 20 Sekunden gedrückt hält. Damit konnte ich mir auch nicht helfen.</p>
+<h2 id="nimm-ihm-die-energie">Nimm ihm die Energie!<a hidden class="anchor" aria-hidden="true" href="#nimm-ihm-die-energie">#</a></h2>
+<p>Als nächstes habe ich die Batterie gezogen und wieder gesteckt. Hat auch nichts gebracht, schadet aber auch nicht. Wie man an die Batterie kommt, beschreibt <a href="https://de.ifixit.com/Anleitung/iRobot+Roomba+i7+Battery+Replacement/131450?lang=en">iFixit</a>.</p>
+<h2 id="tut-die-ladestation-was-sie-soll">Tut die Ladestation was sie soll?<a hidden class="anchor" aria-hidden="true" href="#tut-die-ladestation-was-sie-soll">#</a></h2>
+<p>Wenn der Roboter nicht schuld ist, ist es vielleicht die Ladestation? Mit einem Multimeter lässt sich prüfen, ob die Ladespannung passt:</p>
+<p>Ohne den Roboter geben die Ladekontakte einer funktionierenden Station etwa 2,8V aus. Mit Roboter 20,3-20,6V. Um mit Roboter zu messen, habe ich an jeden Ladekontakt ein Kabel geklemmt, etwas fummelig, funktioniert aber. Die Spannung passte in meinem Fall.</p>
+<p>Bleibt die Leistung. Auf Reddit wurde ich darauf aufmerksam gemacht, dass sich eine funktionierende Station während des Ladens &gt;20W genehmigt. Mit einem Wattmeter habe ich gemessen und nur 2-6W Leistung festgestellt. Ein gutes Indiz für eine defekte Ladestation. Wer sich an eine Reparatur wagen möchte, bekommt hier einen Hinweis:</p>
+<p>Nun haben wir im Haus einen weiteren i7+, also konnte ich mir eine nachweislich funktionierende Ladestation leihen. Auch diese leistete nur 2-6W. Das war’s also auch nicht.</p>
+<h2 id="factory-reset-">Factory Reset 🙄<a hidden class="anchor" aria-hidden="true" href="#factory-reset-">#</a></h2>
+<p>So blieb mir noch der Factory Reset. Nervig, weil der Roboter die Wohnung kennt und nicht vergessen soll. Ist aber halb so schlimm, denn die iRobot Home App fragt vor dem Reset, ob die vorhandene Smart Map in der Cloud zwischengespeichert werden soll. Hab ich gemacht, nur laden wollte der Roboter nicht. Ich habe die Chance allerdings genutzt und den kolonial anmutenden Roboternamen „Sam“ in „Dirty Hairy“ geändert. *badumtss*</p>
+<h2 id="ist-es-doch-die-batterie">Ist es doch die Batterie?<a hidden class="anchor" aria-hidden="true" href="#ist-es-doch-die-batterie">#</a></h2>
+<p>Nach all dem konnte es eigentlich nur noch die Batterie sein. Ich steckte Büroklammern in die Pins der Batterie und maß eine Spannung von 1,3mV. Ein sehr eindeutiges Indiz für einen defekten Akku.</p>
+<p><img loading="lazy" src="https://tonylehnert.de/wordpress/wp-content/uploads/2022/01/image.png"></p>
+<p>Ich bestellte also eine neue Batterie. Und weil ich iRobot keine 59€ für einen Akku in den Rachen werfen wollte, der nach 12 Monaten die Hufe hebt, habe ich mich für das günstigere Alternativmodell von Green Cell entschieden. Bonus: Der 3rd party Akku hat 800mAh mehr Kapazität. Nach Lieferung der Batterie verbaute ich sie und stellte den Roboter auf die Ladestation, der Akku war vorgeladen und wurde anstandslos voll aufgeladen. 🎉</p>
+<p>Was ich in einer Woche mit manuellem Staubsaugen gelernt habe? Zwei Katzen und ein Hund produzieren echt viel Fell.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Tony Lehnert</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

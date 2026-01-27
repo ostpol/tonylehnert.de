@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Bticino Klingelanlage „smart“ machen | Tony Lehnert</title>
+<meta name="keywords" content="">
+<meta name="description" content="In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der ESP-Überallklingel „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.
+Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus TensorFlow, Teachable Machine und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/bticino/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/bticino/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Tony Lehnert (Alt + H)">Tony Lehnert</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bticino Klingelanlage „smart“ machen
+    </h1>
+    <div class="post-meta"><span title='2022-07-23 21:47:39 +0100 +0100'>July 23, 2022</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der <a href="https://www.heise.de/select/ct/2018/17/1534215254552977">ESP-Überallklingel</a> „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.</p>
+<p>Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus <a href="https://www.tensorflow.org/">TensorFlow</a>, <a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a> und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.</p>
+<p>Nun fiel mir vor kurzem die Hardware der ESP-Überallklingel in die Hände. Ich suchte wieder nach Lösungen und bin endlich fündig geworden. Bticino bietet ein <a href="https://web.archive.org/web/20220723190331/https://www.esc-shop.de/WebRoot/Store30/Shops/89603324/60F5/5D63/F5BF/033A/3D4F/0A0C/6D0B/D0CC/A00082_Datenblatt_LE000A82-D-DE_V1.3.pdf">Funk-Gong-Interface (A00082)</a> an, das an unsere Classe 100 V12E Hausstation angeschlossen werden kann und bei einem Klingeln einen potentialfreien Kontakt schaltet. Lässt man nun die Schutzschaltung an der ESP-Überallklingel weg und schaltet den Reset-Pin stattdessen mit dem Schaltkontakt des Funk-Gong-Interface, ist man fertig.</p>
+<p>Ich habe den Code trotzdem noch etwas angepasst. Da ich nicht auf Batteriebetrieb angewiesen bin, kann ich auf den Deep Sleep verzichten und muss nicht nach einem Reset (= Klingeln) auf den Aufbau der WLAN-Verbindung und den Connect zum MQTT-Broker warten, da vergehen schon mal 5 Sekunden vom Klingeln bis zur Notification.</p>
+<p>Zum Schluss habe ich alles in ein <a href="https://twitter.com/ostpol/status/1550860537298407424">Gehäuse aus dem 3D-Drucker</a> geklebt und im Medienkasten im Flur verschwinden lassen. Dank NodeRED lässt sich auch hier jede erdenkliche Automation bauen. Bei uns schreibt ein Telegram-Bot eine Nachricht und die Echo Dots beginnen zu erzählen.</p>
+<pre tabindex="0"><code>//Basiert auf https://www.heise.de/select/ct/2018/17/1534215254552977
+//MQTT reconnect von https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/
+//ezButton Library https://github.com/ArduinoGetStarted/button
+
+#include &lt;Arduino.h&gt;
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;ESP8266HTTPClient.h&gt;
+#include &lt;PubSubClient.h&gt;
+#include &lt;ezButton.h&gt;
+
+const char *wifi_ssid = &#34;SSID&#34;;
+const char *wifi_password = &#34;PSK&#34;;
+
+IPAddress mqttserver(192, 168, 1, 222);
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+const char *deviceName = &#34;ESP-Klingel&#34;;
+
+ezButton button(12);
+
+void setup()
+{
+  Serial.begin(115200);
+
+  button.setDebounceTime(200);
+  
+  WiFi.hostname(deviceName);
+  WiFi.begin(wifi_ssid, wifi_password);
+  WiFi.mode(WIFI_STA);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(50);
+  }
+
+  client.setServer(mqttserver, 1883);
+  client.connect(deviceName);
+  if (client.connected())
+  {
+    client.publish(&#34;esp-klingel/status&#34;, &#34;Hello.&#34;);
+  }
+}
+
+void reconnect()
+{
+  // Loop until we&#39;re reconnected
+  while (!client.connected())
+  {
+    Serial.print(&#34;Attempting MQTT connection...&#34;);
+    // Attempt to connect
+    if (client.connect(deviceName))
+    {
+      Serial.println(&#34;connected&#34;);
+    }
+    else
+    {
+      Serial.print(&#34;failed, rc=&#34;);
+      Serial.print(client.state());
+      Serial.println(&#34; try again in 5 seconds&#34;);
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void loop()
+{
+  button.loop();
+
+  //MQTT Reconnect
+  if (!client.connected())
+  {
+    reconnect();
+  }
+
+  if (button.isPressed())
+  {
+    client.publish(&#34;esp-klingel/klingel&#34;, &#34;1&#34;);
+    Serial.println(&#34;Published message&#34;);
+  }
+}
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Tony Lehnert</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
