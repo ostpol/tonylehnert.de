@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Bticino Klingelanlage „smart“ machen | Tony Lehnert</title>
 <meta name="keywords" content="">
 <meta name="description" content="In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der ESP-Überallklingel „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.
 Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus TensorFlow, Teachable Machine und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/bticino/">
+<link rel="canonical" href="https://tonylehnert.de/posts/bticino/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://tonylehnert.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://tonylehnert.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://tonylehnert.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://tonylehnert.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://tonylehnert.de/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/bticino/">
+<link rel="alternate" hreflang="en" href="https://tonylehnert.de/posts/bticino/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,13 +71,77 @@ Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal an
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://tonylehnert.de/posts/bticino/">
+  <meta property="og:site_name" content="Tony Lehnert">
+  <meta property="og:title" content="Bticino Klingelanlage „smart“ machen">
+  <meta property="og:description" content="In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der ESP-Überallklingel „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.
+Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus TensorFlow, Teachable Machine und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.">
+  <meta property="og:locale" content="de-de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-07-23T21:47:39+01:00">
+    <meta property="article:modified_time" content="2022-07-23T21:47:39+01:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bticino Klingelanlage „smart“ machen">
+<meta name="twitter:description" content="In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der ESP-Überallklingel „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.
+Nach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus TensorFlow, Teachable Machine und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://tonylehnert.de/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bticino Klingelanlage „smart“ machen",
+      "item": "https://tonylehnert.de/posts/bticino/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bticino Klingelanlage „smart“ machen",
+  "name": "Bticino Klingelanlage „smart“ machen",
+  "description": "In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der ESP-Überallklingel „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.\nNach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus TensorFlow, Teachable Machine und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "In unserer letzten Wohnung habe ich die in die Jahre gekommene Klingelanlage mit der ESP-Überallklingel „smart“ gemacht. In unserer aktuellen Wohnung konnte ich das Ding nicht mehr nutzen, weil Bticino mit seinem 2-Draht-System irgendein komisches Protokoll spricht und ich mit der Schaltung aus der ESP-Überallklingel nicht mehr einfach nur auf Spannung warten konnte.\nNach ein paar Monaten in der neuen Wohnung habe ich mir das Thema noch einmal angeschaut, ich fand keine brauchbare Lösung und stürzte mich in ein Durcheinander aus TensorFlow, Teachable Machine und Android App Programmierung. Die Idee war recht naheliegend: Wenn ich die Klingel hören kann, sollte das doch auch ein Stück Technik für mich übernehmen können. Zu meiner Überraschung habe ich es geschafft, ein KI-Modell auf den Sound unserer Klingel zu trainieren und das ganze in geklaute Kotlin-Snippets zu gießen. Leider war der 24/7 Betrieb für das verwendete Galaxy A51 nicht gesund und es gab immer wieder False Positives. Ich nahm wieder einige Monate Abstand.\nNun fiel mir vor kurzem die Hardware der ESP-Überallklingel in die Hände. Ich suchte wieder nach Lösungen und bin endlich fündig geworden. Bticino bietet ein Funk-Gong-Interface (A00082) an, das an unsere Classe 100 V12E Hausstation angeschlossen werden kann und bei einem Klingeln einen potentialfreien Kontakt schaltet. Lässt man nun die Schutzschaltung an der ESP-Überallklingel weg und schaltet den Reset-Pin stattdessen mit dem Schaltkontakt des Funk-Gong-Interface, ist man fertig.\nIch habe den Code trotzdem noch etwas angepasst. Da ich nicht auf Batteriebetrieb angewiesen bin, kann ich auf den Deep Sleep verzichten und muss nicht nach einem Reset (= Klingeln) auf den Aufbau der WLAN-Verbindung und den Connect zum MQTT-Broker warten, da vergehen schon mal 5 Sekunden vom Klingeln bis zur Notification.\nZum Schluss habe ich alles in ein Gehäuse aus dem 3D-Drucker geklebt und im Medienkasten im Flur verschwinden lassen. Dank NodeRED lässt sich auch hier jede erdenkliche Automation bauen. Bei uns schreibt ein Telegram-Bot eine Nachricht und die Echo Dots beginnen zu erzählen.\n//Basiert auf https://www.heise.de/select/ct/2018/17/1534215254552977 //MQTT reconnect von https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/ //ezButton Library https://github.com/ArduinoGetStarted/button #include #include #include #include #include const char *wifi_ssid = \"SSID\"; const char *wifi_password = \"PSK\"; IPAddress mqttserver(192, 168, 1, 222); WiFiClient espClient; PubSubClient client(espClient); const char *deviceName = \"ESP-Klingel\"; ezButton button(12); void setup() { Serial.begin(115200); button.setDebounceTime(200); WiFi.hostname(deviceName); WiFi.begin(wifi_ssid, wifi_password); WiFi.mode(WIFI_STA); while (WiFi.status() != WL_CONNECTED) { delay(50); } client.setServer(mqttserver, 1883); client.connect(deviceName); if (client.connected()) { client.publish(\"esp-klingel/status\", \"Hello.\"); } } void reconnect() { // Loop until we're reconnected while (!client.connected()) { Serial.print(\"Attempting MQTT connection...\"); // Attempt to connect if (client.connect(deviceName)) { Serial.println(\"connected\"); } else { Serial.print(\"failed, rc=\"); Serial.print(client.state()); Serial.println(\" try again in 5 seconds\"); // Wait 5 seconds before retrying delay(5000); } } } void loop() { button.loop(); //MQTT Reconnect if (!client.connected()) { reconnect(); } if (button.isPressed()) { client.publish(\"esp-klingel/klingel\", \"1\"); Serial.println(\"Published message\"); } } ",
+  "wordCount" : "458",
+  "inLanguage": "en",
+  "datePublished": "2022-07-23T21:47:39+01:00",
+  "dateModified": "2022-07-23T21:47:39+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tonylehnert.de/posts/bticino/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tony Lehnert",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tonylehnert.de/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Tony Lehnert (Alt + H)">Tony Lehnert</a>
+            <a href="https://tonylehnert.de/" accesskey="h" title="Tony Lehnert (Alt + H)">Tony Lehnert</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -217,7 +281,7 @@ void loop()
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Tony Lehnert</a></span> · 
+        <span>&copy; 2026 <a href="https://tonylehnert.de/">Tony Lehnert</a></span> · 
 
     <span>
         Powered by

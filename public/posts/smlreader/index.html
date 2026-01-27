@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT) | Tony Lehnert</title>
 <meta name="keywords" content="">
 <meta name="description" content="Bis 2032 sollen alle Verbraucher eine moderne Messeinrichtung (mME) bekommen. In Chemnitz verteilt eins energie/inetz offensichtlich schon fleißig mMEs. So hatte ich schon in unserer vorherigen Wohnung ein Smartmeter und auch in der neuen Wohnung hängt so ein Teil im Keller. In meinem Fall sind beide Geräte vom Typ DWS 7412.1.
 Die meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit verbreitet sind hier wahrscheinlich fertige USB-Leseköpfe. Wer einen Lötkolben halten kann, kann sich aber auch selbst einen Lesekopf bauen. Ich habe mir vor einiger Zeit ein Gehäuse hierfür konstruiert und gedruckt. Auf Thingiverse habe ich auch die Quellen für die Elektronik verlinkt.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/smlreader/">
+<link rel="canonical" href="https://tonylehnert.de/posts/smlreader/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://tonylehnert.de/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://tonylehnert.de/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://tonylehnert.de/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://tonylehnert.de/apple-touch-icon.png">
+<link rel="mask-icon" href="https://tonylehnert.de/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/smlreader/">
+<link rel="alternate" hreflang="en" href="https://tonylehnert.de/posts/smlreader/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,13 +71,77 @@ Die meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit ve
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://tonylehnert.de/posts/smlreader/">
+  <meta property="og:site_name" content="Tony Lehnert">
+  <meta property="og:title" content="Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT)">
+  <meta property="og:description" content="Bis 2032 sollen alle Verbraucher eine moderne Messeinrichtung (mME) bekommen. In Chemnitz verteilt eins energie/inetz offensichtlich schon fleißig mMEs. So hatte ich schon in unserer vorherigen Wohnung ein Smartmeter und auch in der neuen Wohnung hängt so ein Teil im Keller. In meinem Fall sind beide Geräte vom Typ DWS 7412.1.
+Die meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit verbreitet sind hier wahrscheinlich fertige USB-Leseköpfe. Wer einen Lötkolben halten kann, kann sich aber auch selbst einen Lesekopf bauen. Ich habe mir vor einiger Zeit ein Gehäuse hierfür konstruiert und gedruckt. Auf Thingiverse habe ich auch die Quellen für die Elektronik verlinkt.">
+  <meta property="og:locale" content="de-de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-01-21T17:54:04+01:00">
+    <meta property="article:modified_time" content="2021-01-21T17:54:04+01:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT)">
+<meta name="twitter:description" content="Bis 2032 sollen alle Verbraucher eine moderne Messeinrichtung (mME) bekommen. In Chemnitz verteilt eins energie/inetz offensichtlich schon fleißig mMEs. So hatte ich schon in unserer vorherigen Wohnung ein Smartmeter und auch in der neuen Wohnung hängt so ein Teil im Keller. In meinem Fall sind beide Geräte vom Typ DWS 7412.1.
+Die meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit verbreitet sind hier wahrscheinlich fertige USB-Leseköpfe. Wer einen Lötkolben halten kann, kann sich aber auch selbst einen Lesekopf bauen. Ich habe mir vor einiger Zeit ein Gehäuse hierfür konstruiert und gedruckt. Auf Thingiverse habe ich auch die Quellen für die Elektronik verlinkt.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://tonylehnert.de/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT)",
+      "item": "https://tonylehnert.de/posts/smlreader/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT)",
+  "name": "Smartmeter auslesen mit ESP8266 und SMLReader (und MQTT)",
+  "description": "Bis 2032 sollen alle Verbraucher eine moderne Messeinrichtung (mME) bekommen. In Chemnitz verteilt eins energie/inetz offensichtlich schon fleißig mMEs. So hatte ich schon in unserer vorherigen Wohnung ein Smartmeter und auch in der neuen Wohnung hängt so ein Teil im Keller. In meinem Fall sind beide Geräte vom Typ DWS 7412.1.\nDie meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit verbreitet sind hier wahrscheinlich fertige USB-Leseköpfe. Wer einen Lötkolben halten kann, kann sich aber auch selbst einen Lesekopf bauen. Ich habe mir vor einiger Zeit ein Gehäuse hierfür konstruiert und gedruckt. Auf Thingiverse habe ich auch die Quellen für die Elektronik verlinkt.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Bis 2032 sollen alle Verbraucher eine moderne Messeinrichtung (mME) bekommen. In Chemnitz verteilt eins energie/inetz offensichtlich schon fleißig mMEs. So hatte ich schon in unserer vorherigen Wohnung ein Smartmeter und auch in der neuen Wohnung hängt so ein Teil im Keller. In meinem Fall sind beide Geräte vom Typ DWS 7412.1.\nDie meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit verbreitet sind hier wahrscheinlich fertige USB-Leseköpfe. Wer einen Lötkolben halten kann, kann sich aber auch selbst einen Lesekopf bauen. Ich habe mir vor einiger Zeit ein Gehäuse hierfür konstruiert und gedruckt. Auf Thingiverse habe ich auch die Quellen für die Elektronik verlinkt.\nAuf Softwareseite ist volkszaehler.org schon lange dabei und wird gern genutzt. Auch ich habe damit zuerst die Werte vom Zähler abgeholt, allerdings hat mich die Komplexität (hätte ich mich intensiv damit beschäftigt, wäre das sicher kein Problem gewesen) und die Notwendigkeit eines Rechners (ja, ein Raspberry Pi tuts auch) immer etwas gestört.\nIrgendwann bin ich dann auf den SMLReader von Michael Rüttgers aufmerksam geworden. Fertiger Code für ESP8266 Boards, der die Werte des Zählers an einen MQTT-Broker schickt. 🎉\nBei mir hängt seitdem ein NodeMCU am Selbstbau-Lesekopf (bisher über 15 Meter 2×0,75mm2 verbunden) und meldet mir den momentanen Verbrauch und den Gesamtzählerstand. In der neuen Wohnung reichen 15 Meter nicht mehr aus und ich versuche den Sensor über das noch deutlich längere Cat7-Kabel zwischen Wohnung und Keller anzuschließen. Funktioniert das nicht, brauche ich wohl Hardware mit Ethernet (und PoE, bitte?) im Keller, die kein Raspberry Pi ist. Update: Der Sensor ist über die Gebäudeverkabelung mit dem NodeMCU verbunden und funktioniert. Offensichtlich ist die furchtbar einfache Elektronik recht genügsam.\n",
+  "wordCount" : "272",
+  "inLanguage": "en",
+  "datePublished": "2021-01-21T17:54:04+01:00",
+  "dateModified": "2021-01-21T17:54:04+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tonylehnert.de/posts/smlreader/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tony Lehnert",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tonylehnert.de/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Tony Lehnert (Alt + H)">Tony Lehnert</a>
+            <a href="https://tonylehnert.de/" accesskey="h" title="Tony Lehnert (Alt + H)">Tony Lehnert</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -134,7 +198,7 @@ Die meisten mMEs lassen sich über eine optische Schnittstelle auslesen. Weit ve
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Tony Lehnert</a></span> · 
+        <span>&copy; 2026 <a href="https://tonylehnert.de/">Tony Lehnert</a></span> · 
 
     <span>
         Powered by
